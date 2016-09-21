@@ -1,6 +1,6 @@
 # CryptoI
 
-Here is an example that you can work out by hand if you wish. All of the digits are in hex.
+Here is an example that you can work out by hand if you wish. Most of the digits are in hex (except where noted).
 
 key: BCD494EDCD65A5B9F8F3033678627362
 
@@ -8,11 +8,10 @@ ciphertext: 9D67966D3707CA44E0F90F7AF23E24D9D18DEDD46FC4D249F932BEA3949AB1542D4F
 
 cleartext: My simple bit of plain text to encript.
 
-Note: this is 128 bit AES CBC with padding (all padding bytes have the same digit: the number of padding bytes).
+Note: For this note, digits are in decimal. This is 128 bit AES CBC with padding (all padding bytes have the same digit: the number of padding bytes).
       There is always padding. The padding number is between [1,15] enclusive (ie, you cant have a padding byte of 0 or 16,17, or greater.
-
-The ciphertext is always an even multiple of 16 bytes (128 bites). The first 16 bytes is the IV. Lets refer to the 16 bytes as a 'block'.
-So this ciphtext is 4 blocks long. The last block contains x padding bytes.
+      The ciphertext is always an even multiple of 16 bytes (128 bites). The first 16 bytes is the IV. Lets refer to the 16 bytes as a 'block'.
+      So this ciphtext is 4 blocks long. The last block contains x padding bytes.
 
 Here are the intermediate results of a decryption (these are XOR'ed with the IV or the cipher text):
 
