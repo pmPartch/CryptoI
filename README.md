@@ -46,12 +46,45 @@ m1 = c0 XOR D(k,c1) = ' plain text to e'
 m2 = c1 XOR D(k,c2) = 'ncript.'  (after removing the padding)
 
 
-Now, from the picture shown below, lets say your 'lucky' guess g = 65 for the last char of m1 , so lets replace the last byte of c0 with
-54 XOR 65 XOR 01 = 30
+Now, from the picture shown below and compare with my starting, intermediate, and final results above.
 
-now note that if we take this result and XOR  the last byte of the output of D(k,c1) we get:
-31 XOR 30 = 01 (a padding value of 01 is valid. A one byte pad)
 
-Now continuing to the next byte to deduce the m1 byte 20 (a space in ASCII) is to change the padding to 0202 (two byte pad)
+### step 1
+
+remove the last block (with pad)....actually, my solution to this problem starts with this last block, but lets first start with the easy stuff...
+
+### step 2 : guess the last byte of m1 (this may take 256 attempts)
+
+Start guessing at this last byte of m1 (g = 0x00, g = 0x01, etc) and start doing the algorithm noted in the picture below. I'll show this calculation for the one correct answer below (where the padding oracle is returning a bad address but good pad).
+
+your good guess g = 65 for the last char of m1 , so lets replace the last byte of c0 with
+54 XOR 65 XOR 01 = 30. Now note that if we take this result and XOR  the last byte of the output of D(k,c1) we get:
+31 XOR 30 = 01 (a padding value of 01 is valid. A one byte pad). At this point you know the last cleartext byte of m1. Keep this character since you will need it for future steps in this process.
+
+### step 3: guess the next to last byte of m1 (this may take up to 256 attempts)
+
+Going after the 2nd to last byte means that your pad will be two bytes : 0202.
+
+Start guessing at this 2nd to last byte of m1 (g = 0x00, g = 0x01, etc) and start doing the algorithm noted in the picture below but this time you xor with 0x02 instead of 0x01. I'll show this calculation for the one correct answer below (where the padding oracle is returning a bad address but good pad).
+
+In this case I would do the following: I already know the last byte of m1 and lets assume I now know the 2nd to last byte of m1 by querying the oracle.
+
+To the last two bytes changes to c0 will be (g for last byte is 65 and I've determined g for 2nd byte is 20): 
+
+(to be replace in the c0 block. Note I'm XORing with 02 instead of 01 since I now need a 2 byte pad)
+last byte: 54 XOR 65 XOR 02 = 33
+
+2nd to last byte: B1 XOR 20 XOR 02 = 93
+
+So now when I XOR these with the corresponding intermediate results (D(k,c1)) I get:
+
+33 XOR 31 = 02  
+93 XOR 91 = 02  
+
+### step 4: guess the next byte (this time you have a 3 byte pad: 030303)
+
+### step N: keep going to find all of the plaintext m0 and m1
+
+### step N+1: now you need to deal with the last block (the one with the real pad)
 
 ![alt text](https://github.com/pmPartch/CryptoI/raw/master/CBC_decode.PNG "AES with CBC")
