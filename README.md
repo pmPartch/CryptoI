@@ -2,6 +2,8 @@
 
 ## a Coursera Course presented by Dan Boneh of Stanford University
 
+## Padding Oracle Notes
+
 Here is an example that you can work out by hand if you wish. Most of the digits are in hex (except where noted).
 I like to start learning a topic such as this one with having all the information about the cleartext, key, and ciphertext. Note that for the real problem, you only know the ciphertext and that it is an 128 bit AES using CBC. But having all of this additional information might be useful in learning the technique as well as debugging an algorithm that will be used on the actual problem.
 
