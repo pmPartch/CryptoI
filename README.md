@@ -52,3 +52,4 @@ now note that if we take this result and XOR  the last byte of the output of D(k
 
 Now continuing to the next byte to deduce the m1 byte 20 (a space in ASCII) is to change the padding to 0202 (two byte pad)
 
+![alt text](https://github.com/pmPartch/CryptoI/raw/master/CBC_decode.PNG "AES with CBC")
