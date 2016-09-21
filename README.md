@@ -13,7 +13,7 @@ cleartext: My simple bit of plain text to encript.
 Note: For this note, digits are in decimal. This is 128 bit AES CBC with padding (all padding bytes have the same digit: the number of padding bytes).
       There is always padding. The padding number is between [1,15] enclusive (ie, you cant have a padding byte of 0 or 16,17, or greater.
       The ciphertext is always an even multiple of 16 bytes (128 bites). The first 16 bytes is the IV. Lets refer to the 16 bytes as a 'block'.
-      So this ciphtext is 4 blocks long. The last block contains x padding bytes.
+      So this ciphtext is 4 blocks long (incliudes the IV). The last block contains 9 padding bytes.
 
 Here are the intermediate results of a decryption (these are XOR'ed with the IV or the cipher text):
 
