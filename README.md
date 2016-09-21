@@ -14,7 +14,7 @@ cleartext: My simple bit of plain text to encrypt.
 Note: For this note, digits are in decimal. This is 128 bit AES CBC with padding (all padding bytes have the same digit: the number of padding bytes).
       There is always padding. The padding number is between [1,16] inclusive (ie, you cant have a padding byte of 0 or 17,18, or greater.
       The ciphertext is always an even multiple of 16 bytes (128 bites). The first 16 bytes is the IV. Lets refer to the 16 bytes as a 'block'.
-      So this ciphertext is 4 blocks long (includes the IV). The last block contains 9 padding bytes.
+      So this ciphertext is 4 blocks long (includes the IV). The last block contains 9 padding bytes for this specific plaintext encryption.
 
 Here are the intermediate results of a decryption (these are XOR'ed with the IV or the cipher text):
 
@@ -43,7 +43,7 @@ m0 = IV XOR D(k,c0) = 'My simple bit of'
 
 m1 = c0 XOR D(k,c1) = ' plain text to e'  
 
-m2 = c1 XOR D(k,c2) = 'ncript.'  
+m2 = c1 XOR D(k,c2) = 'ncript.'  (after removing the padding)
 
 
 Now, from the picture shown below, lets say your 'lucky' guess g = 65 for the last char of m1 , so lets replace the last byte of c0 with
