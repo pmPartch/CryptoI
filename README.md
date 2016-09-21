@@ -1,4 +1,6 @@
-# CryptoI
+# Cryptography I Notes
+
+## a Coursera Course presented by Dan Boneh of Stanford University
 
 Here is an example that you can work out by hand if you wish. Most of the digits are in hex (except where noted).
 
