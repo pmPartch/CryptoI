@@ -71,8 +71,9 @@ In this case I would do the following: I already know the last byte of m1 and le
 
 To the last two bytes changes to c0 will be (g for last byte is 65 and I've determined g for 2nd byte is 20): 
 
-(to be replace in the c0 block. Note I'm XORing with 02 instead of 01 since I now need a 2 byte pad)
-last byte: 54 XOR 65 XOR 02 = 33
+(to be replaced in the c0 block. Note I'm XORing with 02 instead of 01 since I now need a 2 byte pad)
+last byte:  
+54 XOR 65 XOR 02 = 33
 
 2nd to last byte: B1 XOR 20 XOR 02 = 93
 
