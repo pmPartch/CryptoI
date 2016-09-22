@@ -91,3 +91,15 @@ So now when I XOR these with the corresponding intermediate results (D(k,c1)) I 
 ### step N+1: now you need to deal with the last block (the one with the real pad)
 
 ![alt text](https://github.com/pmPartch/CryptoI/raw/master/CBC_decode.PNG "AES with CBC")
+
+## Use of C# to work the class optional assignments
+
+I'm currently working the week 5 assignment and I continue to do all the assignments using C# (.Net 4.0 using Visual Studio 2010...I'm not using the more current Visual Studios only because they are so freaking slow to launch). Here are some notes about how to handle the various coding tasks.
+
+### implementation using AES by hand-coding your own CBC and CRT modes
+
+AesManaged does have a CBC implementation, but you are asked not to use it and instead implement your own CBC processing. Also, AesManaged does NOT have a counter mode (CRT) so you will be faced with implementation this yourself. Here are some notes:
+
+Aes class is abstract, but you do have a factory in the static Create method of AesManaged.
+But note that you will need to set the KeySize and BlockSize before assigning keys or IV values. So what I did was the following to create an Aes object in order to create a usable block cipher:
+
