@@ -103,3 +103,8 @@ AesManaged does have a CBC implementation, but you are asked not to use it and i
 Aes class is abstract, but you do have a factory in the static Create method of AesManaged.
 But note that you will need to set the KeySize and BlockSize before assigning keys or IV values. So what I did was the following to create an Aes object in order to create a usable block cipher:
 
+![alt text](https://github.com/pmPartch/CryptoI/raw/master/aes_factory.PNG "Aes Factory")
+
+This Aes object can now be used to implement both the CBC and CRT solutions for assignment 2
+
+
