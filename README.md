@@ -107,4 +107,13 @@ But note that you will need to set the KeySize and BlockSize before assigning ke
 
 This Aes object can now be used to implement both the CBC and CRT solutions for assignment 2
 
+### using .Net BigInteger class
 
+Disclaimer: as I write this I have not yet solved the assignment 5...but I'm optimistic.
+
+C# BigInterger does have a modPow method, but does not have a modInverse and the mod operator is, well, a bit hidden.
+
+You can work around the modInverse by using modPow like so:  
+To calculate  b ^ -1 mod m can be accomplished by BigInteger.modPow(b,m-1,m)
+
+The modulus for BigInteger is an operator overload of the % operator...just be sure to have a BigInteger of either side of the operator.
