@@ -98,6 +98,8 @@ I'm currently working the week 5 assignment and I continue to do all the assignm
 
 ### implementation using AES by hand-coding your own CBC and CRT modes
 
+You probably wish to setup a using for the System.Security.Cryptography namespace.
+
 AesManaged does have a CBC implementation, but you are asked not to use it and instead implement your own CBC processing. Also, AesManaged does NOT have a counter mode (CRT) so you will be faced with implementation this yourself. Here are some notes:
 
 Aes class is abstract, but you do have a factory in the static Create method of AesManaged.
@@ -110,6 +112,8 @@ This Aes object can now be used to implement both the CBC and CRT solutions for 
 ### using .Net BigInteger class
 
 Disclaimer: as I write this I have not yet solved the assignment 5...but I'm optimistic.
+
+You need to reference the System.Numerics assembly and probably setup a using for the System.Numerics namespace.
 
 C# BigInterger does have a modPow method, but does not have a modInverse and the mod operator is, well, a bit hidden.
 
