@@ -130,6 +130,6 @@ C# BigInterger does have a modPow method, but does not have a modInverse and the
 You can work around the modInverse by using modPow like so:  
 To calculate  __b ^ -1 mod m__ can be accomplished by __BigInteger.modPow(b,m-1,m)__
 
-The modulus for BigInteger is an operator overload of the % operator...just be sure to have a BigInteger of either side of the operator.
+The modulus for BigInteger is an operator overload of the % operator...just be sure to have a BigInteger of either side of the operator. Also note my comment on modulo operator in C&#35; above as it also applies here.
 
-$
+
