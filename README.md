@@ -96,6 +96,16 @@ So now when I XOR these with the corresponding intermediate results (D(k,c1)) I 
 
 I'm currently working the week 5 assignment and I continue to do all the assignments using C# (.Net 4.0 using Visual Studio 2010...I'm not using the more current Visual Studios only because they are so freaking slow to launch). Here are some notes about how to handle the various coding tasks.
 
+### modulo arithmetic with C#
+
+Note that the modulo operator, %, will produce negative values. For instance, in the R language (and examples in class within the 'Notation' video at 2 minute mark) the following results can be obtained:  
+(5-7) %% 12 = 10  
+But in C# you will find  
+(5-7) % 12 = -2  
+
+You can work around this behavior by rewriting your modulo operations like so: (A % p + p) % p for some arithmetic results A. As a concrete example:  
+((5-7) % 12 + 12) % 12 = 10
+
 ### implementation using AES by hand-coding your own CBC and CRT modes
 
 You probably wish to setup a using for the System.Security.Cryptography namespace.
@@ -121,3 +131,5 @@ You can work around the modInverse by using modPow like so:
 To calculate  __b ^ -1 mod m__ can be accomplished by __BigInteger.modPow(b,m-1,m)__
 
 The modulus for BigInteger is an operator overload of the % operator...just be sure to have a BigInteger of either side of the operator.
+
+$
