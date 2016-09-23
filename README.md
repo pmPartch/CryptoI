@@ -96,7 +96,7 @@ So now when I XOR these with the corresponding intermediate results (D(k,c1)) I 
 
 I'm currently working the week 5 assignment and I continue to do all the assignments using C# (.Net 4.0 using Visual Studio 2010...I'm not using the more current Visual Studios only because they are so freaking slow to launch). Here are some notes about how to handle the various coding tasks.
 
-### modulo arithmetic with C\#
+### modulo arithmetic with C&#35;
 
 Note that the modulo operator, %, will produce negative values. For instance, in the R language (and examples in class within the 'Notation' video at 2 minute mark) the following results can be obtained:  
 (5-7) %% 12 = 10  
