@@ -121,8 +121,6 @@ This Aes object can now be used to implement both the CBC and CRT solutions for 
 
 ### using .Net BigInteger class
 
-Disclaimer: as I write this I have not yet solved the assignment 5...but I'm optimistic.
-
 You need to reference the System.Numerics assembly and probably setup a using for the System.Numerics namespace.
 
 C# BigInterger does have a modPow method, but does not have a modInverse and the mod operator is, well, a bit hidden.
@@ -132,4 +130,9 @@ To calculate  __b ^ -1 mod m__ can be accomplished by __BigInteger.modPow(b,m-2,
 
 The modulus for BigInteger is an operator overload of the % operator...just be sure to have a BigInteger of either side of the operator. Also note my comment on modulo operator in C&#35; above as it also applies here.
 
+### BigInteger integer square root
+
+I found he following .Net BigInteger extension method on Stack Overflow. This worked out well for me when solving the assignment for factoring large primes in week 6. Here is the code snippet (and see the file __BigIntegerExtension.cs__  provided in this repository)
+
+![alt text](https://github.com/pmPartch/CryptoI/raw/master/bigint_sqrt.PNG ".Net BigInteger iSqrt")
 
