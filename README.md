@@ -123,12 +123,15 @@ This Aes object can now be used to implement both the CBC and CRT solutions for 
 
 You need to reference the System.Numerics assembly and probably setup a using for the System.Numerics namespace.
 
-C# BigInterger does have a modPow method, but does not have a modInverse and the mod operator is, well, a bit hidden.
+C# BigInterger does have a modPow method, but does not have a modInverse and the mod operator is, well, a bit hidden. Also, note the modulus behavior noted in a comment above...it applies to BigInteger as well.
+
+
+### BigInteger modInverse
 
 You can work around the modInverse by using modPow like so (for special case where m is prime. See https://en.wikipedia.org/wiki/Modular_multiplicative_inverse#Using_Euler.27s_theorem):  
 To calculate  __b ^ -1 mod m__ can be accomplished by __BigInteger.modPow(b,m-2,m)__
 
-The modulus for BigInteger is an operator overload of the % operator...just be sure to have a BigInteger of either side of the operator. Also note my comment on modulo operator in C&#35; above as it also applies here.
+For other cases, you can use Eulers algorithm. A version I found is provided in the file ModInverse.cs
 
 ### BigInteger integer square root
 
@@ -136,3 +139,7 @@ I found he following .Net BigInteger extension method on Stack Overflow. This wo
 
 ![alt text](https://github.com/pmPartch/CryptoI/raw/master/bigint_sqrt.PNG ".Net BigInteger iSqrt")
 
+### BigInteger.ToByteArray() gotchas
+
+* BigInteger.ToByteArray() will return a byte array only big enough to hold the output data. If there is only one byte of info, then the output will be a single element byte array.
+* BigInteger.ToByteArray() will return a byte array that will be ordered in reverse order than you might expect (little Endian). You might need to apply Array.Reverse() to get what you need to do additonal work (XOR or Encoding.ASCII.ToString())
